@@ -1,1 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generador de Cookies 🍪</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      text-align: center;
+      background-color: #f5f5f5;
+    }
+    h1 {
+      color: #2c3e50;
+    }
+    input {
+      width: 80%;
+      padding: 10px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #3498db;
+      color: #fff;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+    button:hover {
+      background-color: #2980b9;
+    }
+    textarea {
+      width: 80%;
+      height: 200px;
+      margin-top: 10px;
+      padding: 10px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #fff;
+    }
+    .copiado {
+      display: none;
+      color: green;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Generador de Política de Cookies 🍪</h1>
 
+  <label for="sitioWeb">Ingresa el nombre de tu sitio web:</label>
+  <input type="text" id="sitioWeb" placeholder="Ejemplo: MiWeb.com">
+
+  <button onclick="generarTexto()">Generar Texto</button>
+
+  <div id="output">
+    <button onclick="copiarTexto()">📋 Copiar Texto</button>
+    <p class="copiado" id="mensajeCopiado">¡Texto copiado con éxito! ✅</p>
+  </div>
+
+  <textarea id="copiedText" readonly></textarea>
+
+  <script>
+    function generarTexto() {
+      var sitioWebInput = document.getElementById('sitioWeb').value.trim();
+      if (sitioWebInput === '') {
+        alert('Por favor, ingresa el nombre de tu sitio web.');
+        return;
+      }
+
+      var texto = `🔹 **Política de Cookies de ${sitioWebInput}** 🔹\n\n` +
+                  `Las cookies son pequeños archivos de texto que se almacenan en tu navegador ` +
+                  `cuando visitas ${sitioWebInput}. Se utilizan para mejorar tu experiencia de navegación, ` +
+                  `analizar el tráfico y ofrecer publicidad personalizada. A continuación, te explicamos ` +
+                  `los tipos de cookies que usamos:\n\n` +
+                  `✅ **Cookies esenciales**: Necesarias para el funcionamiento básico del sitio.\n` +
+                  `✅ **Cookies de personalización**: Guardan preferencias como idioma y tema.\n` +
+                  `✅ **Cookies de análisis**: Ayudan a mejorar el sitio web mediante datos estadísticos.\n` +
+                  `✅ **Cookies publicitarias**: Permiten mostrar anuncios relevantes para ti.\n\n` +
+                  `🔹 **Cómo administrar las cookies** 🔹\n` +
+                  `Puedes configurar tu navegador para aceptar, rechazar o eliminar cookies en cualquier momento:\n\n` +
+                  `🔗 **Google Chrome**: https://support.google.com/chrome/answer/95647?hl=es\n` +
+                  `🔗 **Mozilla Firefox**: https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies\n` +
+                  `🔗 **Safari**: https://support.apple.com/es-es/HT201265\n` +
+                  `🔗 **Edge**: https://support.microsoft.com/es-es/help/4027947/windows-delete-cookies\n\n` +
+                  `Recuerda que deshabilitar las cookies puede afectar tu experiencia en ${sitioWebInput}.`;
+
+      document.getElementById('copiedText').value = texto;
+    }
+
+    function copiarTexto() {
+      var textarea = document.getElementById('copiedText');
+      textarea.select();
+      document.execCommand('copy');
+
+      var mensaje = document.getElementById('mensajeCopiado');
+      mensaje.style.display = 'block';
+      setTimeout(() => { mensaje.style.display = 'none'; }, 2000);
+    }
+  </script>
+</body>
+</html>
